@@ -14659,6 +14659,17 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Special-thanks-to-Meeke-for-the-extensive-constructive-feedback-and-improvement-ideas">Special thanks to Meeke for the extensive constructive feedback and improvement ideas<a class="anchor-link" href="#Special-thanks-to-Meeke-for-the-extensive-constructive-feedback-and-improvement-ideas">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="What-is-git-at-all?">What is git at all?<a class="anchor-link" href="#What-is-git-at-all?">&#182;</a></h2><ul>
 <li>git vs github &amp; gitlab &amp; Azure repos</li>
 <li>Municipality Guideliens: <em><strong>&quot;open tenzij..&quot;</strong></em><ul>
@@ -14710,7 +14721,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="What-do-we-add-there">What do we add there<a class="anchor-link" href="#What-do-we-add-there">&#182;</a></h2><p><strong>DO:</strong> code, configs, server scripts, documentation</p>
+<h2 id="What-do-we-add-there">What do we add there<a class="anchor-link" href="#What-do-we-add-there">&#182;</a></h2><p><strong>DO:</strong> code, configs (<em>but no secrets!</em>), server scripts, documentation</p>
 <p><strong>DO:</strong> gitignore, workflows, other github files</p>
 
 </div>
@@ -14749,7 +14760,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>DON’T:</strong> data, large files</p>
-<p><strong>DON'T:</strong> secrets, <em>anything sensitive</em></p>
+<p><strong>DON'T:</strong> secrets, names (employees, customers, ...), <em>anything sensitive</em></p>
 
 </div>
 </div>
@@ -14765,7 +14776,81 @@ div.jp-OutputPrompt {
 <ul>
 <li><a href="https://huggingface.co/docs/datasets/share">hugging face</a></li>
 <li><a href="https://about.zenodo.org/">zenodo</a></li>
+<li><a href="https://git-lfs.com/">Git Large File Storage</a></li>
+<li>For city datasets <a href="data.amsterdam.nl">data.amsterdam.nl</a> might be an option (contact datapunt@amsterdam.nl)</li>
 </ul>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">Sidenote thanks to Meeke: How to deal with secrets?<a class="anchor-link" href="#Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">&#182;</a></h3><h4 id="Option-1:">Option 1:<a class="anchor-link" href="#Option-1:">&#182;</a></h4><p><em><strong>Set them manually</strong></em> as an environment variable, then load those in your script. Example:</p>
+<pre><code>import os
+secret = os.environ.get(&quot;MY_ENV_VARIABLE&quot;)
+</code></pre>
+
+</div>
+</div>
+</div>
+</div></section><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">Sidenote thanks to Meeke: How to deal with secrets?<a class="anchor-link" href="#Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">&#182;</a></h3><h4 id="Option-2:">Option 2:<a class="anchor-link" href="#Option-2:">&#182;</a></h4><p>Use <code>python-dotenv</code> package combined with a <code>.env</code> file.</p>
+<ol>
+<li>Put your secrets in a file named <code>.env</code>:</li>
+</ol>
+<pre><code>API_KEY=test-key
+API_SECRET=test-secret
+</code></pre>
+<p>Note: Do <strong>not</strong> add the <code>.env</code> file to your repository!</p>
+<ol start="2">
+<li>Load the secrets using the <code>dotenv</code> package:</li>
+</ol>
+<pre><code>from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+api_key = os.getenv(&quot;API_KEY&quot;)
+api_secret = os.getenv(&quot;API_SECRET&quot;)
+</code></pre>
+
+</div>
+</div>
+</div>
+</div></section><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">Sidenote thanks to Meeke: How to deal with secrets?<a class="anchor-link" href="#Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">&#182;</a></h3><h4 id="Option-3:">Option 3:<a class="anchor-link" href="#Option-3:">&#182;</a></h4><p>Put them in a <em><strong>manual config file</strong></em> (for example a <code>json</code> or <code>yaml</code> file) and load this file in your code. Of course you do <strong>not</strong> include this config file in the repository.</p>
+<p>In the project documentation, make sure to include information on which secrets need to be set, because nothing is more annoying than having to run a script 10 times for it to fail consecutively at each next attempt to load a secret. For example, create a sample <code>.env</code>, <code>.json</code> or <code>.yaml</code> file with the right structure but bogus values for the secrets.</p>
+
+</div>
+</div>
+</div>
+</div></section><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">Sidenote thanks to Meeke: How to deal with secrets?<a class="anchor-link" href="#Sidenote-thanks-to-Meeke:-How-to-deal-with-secrets?">&#182;</a></h3><p>In the project documentation, <em><strong>make sure to include information on which secrets need to be set</strong></em>, because nothing is more annoying than having to run a script 10 times for it to fail consecutively at each next attempt to load a secret. 
+<br />
+For example, create a sample <code>.env</code>, <code>.json</code> or <code>.yaml</code> file with the right structure but bogus values for the secrets.</p>
 
 </div>
 </div>
@@ -14830,11 +14915,17 @@ git push --set-upstream origin master
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Project-structure:">Project structure:<a class="anchor-link" href="#Project-structure:">&#182;</a></h4><ul>
-<li>anything fine-ish as long as it's explained in the readme</li>
+<li>anything fine-ish as long as it is:<ul>
+<li>used consistent</li>
+<li>explained in the readme</li>
+</ul>
+</li>
 <li>look up common structure and naming conventions</li>
 <li><a href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter</a></li>
 </ul>
-<p><span style="color:red"><strong><em>AI Team Guidelines???</em></strong><span></p>
+<p><span style="color:red"><strong><em>TODO: Add convention advanced analytics</em></strong><span>
+<br />
+<span style="color:red"><strong><em>AI Team Guidelines???</em></strong><span></p>
 
 </div>
 </div>
@@ -14848,7 +14939,8 @@ git push --set-upstream origin master
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Always-have-a...">Always have a...<a class="anchor-link" href="#Always-have-a...">&#182;</a></h3><h4 id="README.md"><strong>README.md</strong><a class="anchor-link" href="#README.md">&#182;</a></h4><ul>
 <li>Should change together with the code (from the start!)</li>
-<li>Example <a href="https://github.com/Amsterdam-Internships/InternshipAmsterdamGeneral/blob/master/README.md">here</a></li>
+<li>Markdown files can be added to different subfolders to explain separate parts of the code</li>
+<li>Example for repo-level readme <a href="https://github.com/Amsterdam-Internships/InternshipAmsterdamGeneral/blob/master/README.md">here</a></li>
 <li>At least:<ul>
 <li>short summary/description</li>
 <li>installation</li>
@@ -14876,9 +14968,11 @@ git push --set-upstream origin master
 <li>you can always <code>pip freeze &gt; requirements.txt</code></li>
 <li>or use <a href="https://pypi.org/project/pipdeptree/">pipdeptree</a> (top-level packages, no dependencies): <code>pipdeptree --warn silence | grep -E '^\w+' &gt; requirements.txt</code></li>
 <li>or <a href="https://github.com/bndr/pipreqs">pipreqs</a> for project requirements only</li>
+<li>or <code>poetry</code> in combination with a <code>pyproject.toml</code> file [<a href="https://python-poetry.org/">link</a>]. Takes care of dependencies, virtual environment management, and building your code into a package.</li>
 </ul>
-<p>For conda: ask the internet</p>
-<p><span style="color:red"><strong><em>AI Team Guidelines???</em></strong><span></p>
+<p><span style="color:red"><strong><em>TODO: Elaborate on conda usage</em></strong><span>
+<br />
+<span style="color:red"><strong><em>AI Team Guidelines???</em></strong><span></p>
 
 </div>
 </div>
@@ -14935,6 +15029,26 @@ git push --set-upstream origin master
 <li>.gitattributes</li>
 <li>example of source and notebooks separated: <a href="https://github.com/Amsterdam-AI-Team/Urban_PointCloud_Processing">https://github.com/Amsterdam-AI-Team/Urban_PointCloud_Processing</a></li>
 </ul>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Nice-to-have-a...">Nice to have a...<a class="anchor-link" href="#Nice-to-have-a...">&#182;</a></h3><p><span style="color:red"><strong><em>TODO: General pre-commit hooks</em></strong><span></p>
+<p>Recommendations Meeke:</p>
+<ul>
+<li><a href="https://github.com/timothycrosley/isort">https://github.com/timothycrosley/isort</a></li>
+<li><a href="https://github.com/psf/black">https://github.com/psf/black</a></li>
+<li><a href="https://github.com/PYCQA/flake8">https://github.com/PYCQA/flake8</a></li>
+<li><a href="https://github.com/pre-commit/mirrors-mypy">https://github.com/pre-commit/mirrors-mypy</a></li>
+</ul>
+<p>When using <code>flake8</code> and <code>black</code> in parallel, you may need to add a <code>.flake8</code> file to exclude some checks from <code>flake8</code>, as they clash with <code>black</code>.</p>
 
 </div>
 </div>
@@ -15058,7 +15172,9 @@ git push --set-upstream origin master
 </ul>
 </li>
 </ul>
-<p>Whenever in doubt: google <a href="https://arxiv.org/pdf/2202.02974.pdf">&quot;what's a good commit message&quot;</a></p>
+<p>Awesome talk on <a href="https://blog.mocoso.co.uk/talks/2015/01/12/telling-stories-through-your-commits/"><code>telling stories through your commits</code></a>
+<br />
+Whenever in doubt: google <a href="https://arxiv.org/pdf/2202.02974.pdf">&quot;what's a good commit message&quot;</a></p>
 
 </div>
 </div>
@@ -15148,6 +15264,7 @@ branch.master.merge=refs/heads/master
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>user.email=iva.gornishka@gmail.com
 user.name=Iva Gornishka
+credential.helper=store
 </pre>
 </div>
 </div>
@@ -15210,11 +15327,8 @@ Changes not staged for commit:
 
 Untracked files:
   (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
-	<span class="ansi-red-fg">.ipynb_checkpoints/</span>
-	<span class="ansi-red-fg">GithubBasics slides.pdf</span>
-	<span class="ansi-red-fg">GithubBasics.slides.html</span>
+	<span class="ansi-red-fg">GithubBasics-Meeke.ipynb</span>
 	<span class="ansi-red-fg">convert-slides.sh</span>
-	<span class="ansi-red-fg">env/</span>
 	<span class="ansi-red-fg">requirements.txt</span>
 
 no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;)
@@ -15295,11 +15409,8 @@ Changes not staged for commit:
 
 Untracked files:
   (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
-	<span class="ansi-red-fg">.ipynb_checkpoints/</span>
-	<span class="ansi-red-fg">GithubBasics slides.pdf</span>
-	<span class="ansi-red-fg">GithubBasics.slides.html</span>
+	<span class="ansi-red-fg">GithubBasics-Meeke.ipynb</span>
 	<span class="ansi-red-fg">convert-slides.sh</span>
-	<span class="ansi-red-fg">env/</span>
 
 </pre>
 </div>
@@ -15337,7 +15448,7 @@ Untracked files:
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[master 0003993] updated requirements (jupyter)
+<pre>[master ec97591] updated requirements (jupyter)
  1 file changed, 1 insertion(+)
  create mode 100644 requirements.txt
 </pre>
@@ -15380,10 +15491,139 @@ Untracked files:
 Counting objects: 100% (4/4), done.
 Delta compression using up to 12 threads
 Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 401 bytes | 401.00 KiB/s, done.
-Total 3 (delta 0), reused 1 (delta 0)
+Writing objects: 100% (3/3), 308 bytes | 308.00 KiB/s, done.
+Total 3 (delta 1), reused 1 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To github.com:Amsterdam-Internships/GithubDemo.git
-   8972d33..0003993  master -&gt; master
+   af23740..ec97591  master -&gt; master
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Fix-small-forgotten-things-without-a-whole-new-%22fix-typo%22-commit">Fix small forgotten things without a whole new "fix typo" commit<a class="anchor-link" href="#Fix-small-forgotten-things-without-a-whole-new-%22fix-typo%22-commit">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div class="fragment" ><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;cookiecutter&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>requirements.txt
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment" ><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>add<span class="w"> </span>requirements.txt
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>--no-edit
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[master de8c65a] updated requirements (jupyter)
+ Date: Wed Mar 15 12:58:12 2023 +0100
+ 1 file changed, 2 insertions(+)
+ create mode 100644 requirements.txt
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>push<span class="w"> </span>-f<span class="w"> </span>origin
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 323 bytes | 323.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:Amsterdam-Internships/GithubDemo.git
+ + ec97591...de8c65a master -&gt; master (forced update)
 </pre>
 </div>
 </div>
@@ -15409,7 +15649,7 @@ To github.com:Amsterdam-Internships/GithubDemo.git
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>reset<span class="w"> </span>--mixed<span class="w"> </span>HEAD~1
@@ -15437,7 +15677,7 @@ To github.com:Amsterdam-Internships/GithubDemo.git
 M	GithubBasics.ipynb
 Total 0 (delta 0), reused 0 (delta 0)
 To github.com:Amsterdam-Internships/GithubDemo.git
- + 0003993...8972d33 master -&gt; master (forced update)
+ + de8c65a...af23740 master -&gt; master (forced update)
 </pre>
 </div>
 </div>
@@ -15451,7 +15691,7 @@ To github.com:Amsterdam-Internships/GithubDemo.git
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>git<span class="w"> </span>status
@@ -15484,11 +15724,8 @@ Changes not staged for commit:
 
 Untracked files:
   (use &#34;git add &lt;file&gt;...&#34; to include in what will be committed)
-	<span class="ansi-red-fg">.ipynb_checkpoints/</span>
-	<span class="ansi-red-fg">GithubBasics slides.pdf</span>
-	<span class="ansi-red-fg">GithubBasics.slides.html</span>
+	<span class="ansi-red-fg">GithubBasics-Meeke.ipynb</span>
 	<span class="ansi-red-fg">convert-slides.sh</span>
-	<span class="ansi-red-fg">env/</span>
 	<span class="ansi-red-fg">requirements.txt</span>
 
 no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;)
@@ -15711,6 +15948,20 @@ no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Useful-resources">Useful resources<a class="anchor-link" href="#Useful-resources">&#182;</a></h2><ul>
+<li>Joel Chippindale's talk on <a href="https://blog.mocoso.co.uk/talks/2015/09/14/learning-through-blameless-reviews/"><code>blameless reviews</code></a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2><span style="color:red"><strong>TODO:</strong><span></h2>
 
 </div>
@@ -15748,6 +15999,41 @@ no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;
 </div>
 </div>
 </div>
+</div><aside class="notes">
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Random-to-incorporate">Random to incorporate<a class="anchor-link" href="#Random-to-incorporate">&#182;</a></h3><ul>
+<li>&quot;the scout rule&quot; of <a href="%60https://blog.mocoso.co.uk/talks/2020/02/27/take-control-of-code-quality/%60">this dude</a> or <a href="https://www.oreilly.com/library/view/97-things-every/9780596809515/ch08.html">this other dude</a><ul>
+<li>Refactoring before implementation to reduce the risk of not doing it at all</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+</aside><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
